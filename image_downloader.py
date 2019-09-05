@@ -1,12 +1,8 @@
 import requests
 import bs4 as bs
-import urllib.request
 
+print ('Please, enter a valid URL in the following format: https://facebook.com/')
 url = str(input('URL: '))
-
-opener = urllib.request.build_opener()
-opener.addheaders = [{'User-Agent' : 'Mozilla'}]
-urllib.request.install_opener(opener)
 
 raw = requests.get(url).text
 soup = bs.BeautifulSoup(raw, 'html.parser')
@@ -17,13 +13,18 @@ links = []
 
 for img in imgs:
     link = img.get('src')
-    if 'http://' not in link:
+    if 'https://' not in link:
         link = url + link
     links.append(link)
 
 print('Images detected: ' + str(len(links)))
 
 for i in range(len(links)):
+    print(links[i])
+    p = requests.get(links[i])
     filename = 'img{}.png'.format(i)
-    urllib.request.urlretrieve(links[i], filename)
-    print('Done!')
+    out = open(filename, "wb")
+    out.write(p.content)
+    out.close()
+
+print('Images successfully downloaded')
