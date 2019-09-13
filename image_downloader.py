@@ -1,8 +1,16 @@
 import requests
 import bs4 as bs
+import os
+
+path = os.getcwd()
 
 print ('Please, enter a valid URL in the following format: https://facebook.com/')
 url = str(input('URL: '))
+
+split = url.split('/')
+folder = path +'/downloads/' + split[2]
+if not os.path.exists(folder):
+    os.makedirs(folder)
 
 raw = requests.get(url).text
 soup = bs.BeautifulSoup(raw, 'html.parser')
@@ -23,7 +31,8 @@ for i in range(len(links)):
     print(links[i])
     p = requests.get(links[i])
     filename = 'img{}.png'.format(i)
-    out = open(filename, "wb")
+    filepath = folder + '/' + filename
+    out = open(filepath, "wb")
     out.write(p.content)
     out.close()
 
