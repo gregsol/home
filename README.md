@@ -1,2 +1,2 @@
 # home
-First repository for test programs 
+My repository for studying and creation some programs on Python
