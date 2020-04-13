@@ -1,0 +1,16 @@
+a1 = input()
+a2 = input()
+a3 = input()
+a4 = input()
+abc1 = list(a1)
+abc2 = list(a2)
+#print(abc1,abc2)
+d1 = dict(zip(abc1,abc2))
+d2 = dict(zip(abc2,abc1))
+#print(d1)
+#print(d2)
+for i in a3:
+    print(d1[i],end='')
+print()
+for i in a4:
+    print(d2[i],end='')
