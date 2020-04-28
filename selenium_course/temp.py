@@ -1,4 +1,4 @@
-# temp file
+# temporary file
 
 from selenium import webdriver
 
