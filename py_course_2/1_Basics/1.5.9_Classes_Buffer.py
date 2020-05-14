@@ -5,8 +5,8 @@ class Buffer:
         self.buf = []
 
     def add(self, *a):
-        for i in range(len(a)):
-            self.buf.append(a[i])
+        for i in a:
+            self.buf.append(i)
             if len(self.buf) == 5:
                 print(sum(self.buf))
                 self.buf.clear()
