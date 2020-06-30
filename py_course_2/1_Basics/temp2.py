@@ -45,3 +45,5 @@ j = int(input())
 for i in range(j):
     class1, class2 = input().split()
     search(class1,class2,dict)
+
+#some changes
